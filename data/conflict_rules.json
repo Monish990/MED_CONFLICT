@@ -1,0 +1,67 @@
+{
+  "dose_ranges": {
+    "metformin": { "min_mg": 500, "max_mg": 2550, "unit": "mg" },
+    "lisinopril": { "min_mg": 2.5, "max_mg": 40, "unit": "mg" },
+    "amlodipine": { "min_mg": 2.5, "max_mg": 10, "unit": "mg" },
+    "atorvastatin": { "min_mg": 10, "max_mg": 80, "unit": "mg" },
+    "furosemide": { "min_mg": 20, "max_mg": 600, "unit": "mg" },
+    "warfarin": { "min_mg": 1, "max_mg": 10, "unit": "mg" },
+    "aspirin": { "min_mg": 81, "max_mg": 325, "unit": "mg" },
+    "omeprazole": { "min_mg": 10, "max_mg": 40, "unit": "mg" },
+    "carvedilol": { "min_mg": 3.125, "max_mg": 25, "unit": "mg" },
+    "spironolactone": { "min_mg": 12.5, "max_mg": 50, "unit": "mg" },
+    "insulin glargine": { "min_mg": 10, "max_mg": 100, "unit": "units" },
+    "losartan": { "min_mg": 25, "max_mg": 100, "unit": "mg" },
+    "sevelamer": { "min_mg": 800, "max_mg": 2400, "unit": "mg" },
+    "cinacalcet": { "min_mg": 30, "max_mg": 180, "unit": "mg" }
+  },
+  "drug_classes": {
+    "ace_inhibitors": ["lisinopril", "enalapril", "ramipril", "benazepril", "captopril"],
+    "arbs": ["losartan", "valsartan", "irbesartan", "olmesartan", "telmisartan"],
+    "beta_blockers": ["carvedilol", "metoprolol", "atenolol", "bisoprolol"],
+    "statins": ["atorvastatin", "rosuvastatin", "simvastatin", "pravastatin"],
+    "loop_diuretics": ["furosemide", "torsemide", "bumetanide"],
+    "nsaids": ["ibuprofen", "naproxen", "indomethacin", "ketorolac", "celecoxib"],
+    "anticoagulants": ["warfarin", "apixaban", "rivaroxaban", "dabigatran"],
+    "antiplatelets": ["aspirin", "clopidogrel", "ticagrelor"]
+  },
+  "blacklisted_combinations": [
+    {
+      "id": "COMBO_001",
+      "classes": ["ace_inhibitors", "arbs"],
+      "severity": "high",
+      "reason": "ACE inhibitor + ARB dual blockade: increased risk of hypotension, hyperkalemia, renal failure in CKD/dialysis patients"
+    },
+    {
+      "id": "COMBO_002",
+      "classes": ["anticoagulants", "antiplatelets"],
+      "severity": "high",
+      "reason": "Anticoagulant + antiplatelet combination significantly increases bleeding risk"
+    },
+    {
+      "id": "COMBO_003",
+      "classes": ["nsaids", "anticoagulants"],
+      "severity": "high",
+      "reason": "NSAIDs with anticoagulants: major GI bleeding risk"
+    },
+    {
+      "id": "COMBO_004",
+      "classes": ["nsaids", "ace_inhibitors"],
+      "severity": "medium",
+      "reason": "NSAIDs reduce ACE inhibitor efficacy and worsen renal function"
+    },
+    {
+      "id": "COMBO_005",
+      "classes": ["nsaids", "loop_diuretics"],
+      "severity": "medium",
+      "reason": "NSAIDs antagonize diuretic effect and worsen fluid retention"
+    },
+    {
+      "id": "COMBO_006",
+      "drugs": ["warfarin", "aspirin"],
+      "severity": "high",
+      "reason": "Warfarin + aspirin: compounded bleeding risk even at cardioprotective aspirin doses"
+    }
+  ],
+  "dose_mismatch_tolerance_pct": 10
+}
